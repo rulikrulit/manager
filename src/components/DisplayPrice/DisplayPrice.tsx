@@ -13,7 +13,9 @@ const styles: StyleRulesCallback<ClassNames> = (theme: Theme) => ({
     display: 'inline-block',
   },
   per: {
+    color: theme.color.green,
     display: 'inline-block',
+    fontWeight: 400,
   },
 });
 
@@ -30,12 +32,12 @@ export const DisplayPrice: React.StatelessComponent<CombinedProps> = (props) => 
   const { classes, interval, price } = props;
   return (
     <React.Fragment>
-      <Typography role="header" variant="subheading" className={classes.price}>
+      <Typography role="header" variant="subheading" className={classes.price} qa-data-price={displayPrice(price)}>
         {displayPrice(price)}
       </Typography>
       {interval &&
-        <Typography role="header" variant="subheading" className={classes.per}>
-          &nbsp;/{interval}
+        <Typography role="header" variant="subheading" className={classes.per} qa-data-billing-interval={interval}>
+          /{interval}
         </Typography>
       }
     </React.Fragment>
